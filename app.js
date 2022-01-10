@@ -78,7 +78,7 @@ const app = Vue.createApp({
              let index = this.contactos.findIndex((objeto)=> objeto.correo == contacto.correo);
              console.log(index);
              if(index!=-1){
-                //this.contactos.splice(index,1);
+                this.contactos.splice(index,1);
              }
         },
         actualizarContacto(){
