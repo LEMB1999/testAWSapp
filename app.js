@@ -38,7 +38,7 @@ const app = Vue.createApp({
         mostraFormulario(tipo,contacto = null){
 
             this.validacion = false;
-            console.log(tipo)
+        
             if(tipo=="agregar"){
                 this.titulo = "Agregar";
                  //limpiar contacto actual
@@ -46,7 +46,7 @@ const app = Vue.createApp({
                     this.contactoActual[propiedad] = "";
                 }
                
-                console.log(this.contactoActual);
+               
 
             }else{
                 this.titulo = "Actualizar";
@@ -73,10 +73,9 @@ const app = Vue.createApp({
                 }
         },
         eliminarContacto(contacto){
-             console.log(this.contactos)
-             console.log(contacto)
+         
              let index = this.contactos.findIndex((objeto)=> objeto.correo == contacto.correo);
-             console.log(index);
+       
              if(index!=-1){
                 this.contactos.splice(index,1);
              }
