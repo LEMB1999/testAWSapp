@@ -38,10 +38,16 @@ const app = Vue.createApp({
         mostraFormulario(tipo,contacto = null){
 
             this.validacion = false;
-
+            console.log(tipo)
             if(tipo=="agregar"){
                 this.titulo = "Agregar";
-                this.contactoActual = "";
+                 //limpiar contacto actual
+                 for(let propiedad in this.contactoActual){
+                    this.contactoActual[propiedad] = "";
+                }
+               
+                console.log(this.contactoActual);
+
             }else{
                 this.titulo = "Actualizar";
                 this.contactoActual = contacto;
@@ -51,7 +57,8 @@ const app = Vue.createApp({
 
         },
         agregarContacto(){
-
+            
+                
                 if(!this.contactoActual.nombre || !this.contactoActual.apellido || !this.contactoActual.correo){
                 
                     this.validacion = true;
@@ -66,13 +73,16 @@ const app = Vue.createApp({
                 }
         },
         eliminarContacto(contacto){
-             let index = this.contactos.findIndex((objeto)=> objeto.email == contacto.email);
+             console.log(this.contactos)
+             console.log(contacto)
+             let index = this.contactos.findIndex((objeto)=> objeto.correo == contacto.correo);
+             console.log(index);
              if(index!=-1){
-                this.contactos.splice(index,1);
+                //this.contactos.splice(index,1);
              }
         },
         actualizarContacto(){
-
+          
             if(!this.contactoActual.nombre || !this.contactoActual.apellido || !this.contactoActual.correo){
                 
                 this.validacion = true;
@@ -87,7 +97,7 @@ const app = Vue.createApp({
 
                 //limpiar contacto actual
                 for(let propiedad in this.contactoActual){
-                    this.contactoActual.propiedad = "";
+                    this.contactoActual[propiedad] = "";
                 }
                 this.modal.hide();
             }
